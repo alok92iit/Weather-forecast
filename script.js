@@ -5,7 +5,7 @@ search.addEventListener("keydown",(e)=>getCity(e))
             const  city =search.value;
             search.value=""
             const key ='75a1125c288f8dba3e33a7218951b256'
-            const api =`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=75a1125c288f8dba3e33a7218951b256&units=metric`
+            const api =`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=75a1125c288f8dba3e33a7218951b256&units=metric`
           await  fetch(api).then((res) =>{
               return res.json();
           }).then((data)=>
@@ -16,7 +16,7 @@ search.addEventListener("keydown",(e)=>getCity(e))
               let temp =data.main.temp
               let wind =data.wind.speed
               icon.innerHTML =`<center>
-                                      <img src=http://openweathermap.org/img/wn/${iconCode}@2x.png></img>
+                                      <img src=https://openweathermap.org/img/wn/${iconCode}@2x.png></img>
                                       <p>${weatherDesc}</p>
                               </center>`
               weatherDetail.innerHTML =`<center>
@@ -25,6 +25,7 @@ search.addEventListener("keydown",(e)=>getCity(e))
                                               <p>Wind Speed ${wind}</p>
                                         </center>`
           }).catch((err)=>{
+            console.log(err)
             alert("You Enter Wrong City Name")
           })   
         }
